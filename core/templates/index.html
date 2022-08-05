@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <!-- Links  -->
+    {% include 'elements/links.html' %}
+    {% load static %}
+</head>
+<body>
+     <!-- top navigation bar like search profile menu  -->
+     <div class="d-flex flex-column" id="content-wrapper">
+        <div id="content">
+            {% include 'elements/navigation.html' %}
+        <!-- TOTAL NAVIGATION ENDED  -->
+    <div class="container">
+        <div class="box ">
+            <input type="text" name="search-box" id="search" placeholder="Type to begin search">
+            <!-- button -->
+            <button type="button" class="btn btn-primary" id="search-btn">Search</button>
+        </div>
+        <div class="cards-section">
+            <!-- add a title -->
+            <br><br>
+            {% if user.last_name == 'organizer' %}
+            <h2 class="text-center" style="color: black;font-weight:bold;">Your Programs</h2>
+            {% else %}
+            <h2 class="text-center" style="color: black;font-weight:bold;">Open Programs</h2>
+            {% endif %}
+           
+            <br><br>
+            <!-- Cards Start -->
+            <div style="display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;">
+                {% for mod in model %}
+                <div class="card col-md-5 col-sm-12" style="margin-bottom: 40px;">
+                    <div class="card-body">
+                    <a href="view_eca/{{ mod.id }}" style="text-decoration: none;">
+                        <h5 class="card-title">{{ mod.name }}</h5>
+                    </a>
+                    <br>
+                    <h6 class="card-subtitle mb-2 text-muted theme-content">THEME</h6>
+                    <div wrap="wrap" direction="row" class="theme-desc">
+                        <div class=" theme-conts">
+                            <p class=" theme-content">{{ mod.theme }}</p>
+                        </div>
+                    </div>
+                    <div class="card-text">
+                        <div direction="row" wrap="wrap" style="align-self:flex-start" class="   kzkZgo">
+                            <div class=" theme-box">
+                                <p class=" theme-texts">{{ mod.online_or_offline }}</p>
+                            </div>
+                            <div class=" theme-box">
+                                <p class=" theme-texts">Open</p>
+                            </div>
+                            <div class=" theme-box">
+                                <p class=" theme-texts">Starts {{mod.happening_date}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="view_eca/{{ mod.name }}" class="card-link">
+                        <button class=" btn-green btn-lg" style="width: 100%;">Apply Now</button>
+                    </a>
+                    </div>
+                </div>
+                {% endfor %}
+             
+            </div>
+        </div>
+    </div>
+
+    
+<!-- Scripts -->
+{% include 'elements/scripts.html' %}
+</body>
+</html>

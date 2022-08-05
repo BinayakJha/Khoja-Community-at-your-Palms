@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% include 'elements/links.html' %}
+    {% load static %}
+</head>
+
+<body>
+    {% include 'elements/navigation.html' %}
+    <style>
+        .title_top {
+            display: flex;
+            flex-direction: column;
+            -webkit-box-align: center;
+            align-items: center;
+        }
+
+        .bg-color {
+            background-color: rgb(255, 255, 255);
+        }
+
+        .addition-css {
+            display: flex;
+            gap: 24px;
+            -webkit-box-align: center;
+            align-items: center;
+        }
+
+        .box_cont-1 {
+            padding-top: 32px;
+            padding-bottom: 32px;
+        }
+
+        .box_cont {
+            width: 5rem;
+            border-radius: 16px;
+            overflow: hi
+        }
+
+        .box_cont-2 {
+            position: relative;
+            width: 100%;
+            padding-bottom: 100%;
+        }
+
+        .title-box {
+            position: absolute;
+            inset: 0px;
+        }
+
+        .title_text {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .title_text_2 {
+            display: flex;
+            gap: 8px;
+            -webkit-box-align: center;
+            align-items: center;
+        }
+
+        .title_text_3 {
+            box-sizing: border-box;
+            margin: 0px;
+            font-family: "Poppins", sans-serif;
+            font-size: 36px;
+            color: rgb(39, 51, 57);
+            font-weight: 900;
+            line-height: 40px;
+            letter-spacing: -0.005em;
+        }
+
+        #image-css {
+            box-sizing: border-box;
+            display: block;
+            overflow: hidden;
+            width: initial;
+            height: initial;
+            background: none;
+            opacity: 1;
+            border: 0;
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0
+        }
+
+        #image-css img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            box-sizing: border-box;
+            padding: 0;
+            border: none;
+            margin: auto;
+            display: block;
+            width: 0;
+            height: 0;
+            min-width: 100%;
+            max-width: 100%;
+            min-height: 100%;
+            max-height: 100%;
+            object-fit: cover
+        }
+    </style>
+    <div class="container-flex">
+        <div direction="column" class="  bg-color title_top">
+            <div class="  box_cont-1 addition-css">
+                <div width="5rem" overflow="hidden" class="  box_cont ">
+                    <div width="100%" class=" box_cont-2">
+                        <div class=" title-box"><span id="image-css"><img alt="{{ model.name }}" sizes="100vw"
+                                    src="{% static 'image/avatar.png' %}"></span>
+                        </div>
+                    </div>
+                </div>
+                <div direction="column" class="   title_text">
+                    <div class="   title_text_2">
+                        <h1 class=" title_text_3" style="text-transform: uppercase; ">{{ model.name }}</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="container">
+   <div class="row">
+    <div class="col-md-12">
+        <div class="boxxx">
+            <!-- add heading called About  -->
+            <div class="   title_text_2" style="padding: 10px;">
+                <h1 class=" title_text_3" style="text-transform: uppercase; ">ABOUT</h1>
+            </div>
+            <div class="   title_text_2" style="padding: 10px;">
+                <p class=" title_text_1" style="font-size: 18px;text-align: justify;">{{ model.message }}</p>
+            </div>
+            
+                <!-- add the email phone number and other given information -->
+                <div class="col-md-12 " style=" display: flex;justify-content: flex-start;flex-wrap: wrap; flex-direction: row;">
+                    
+                    <div class="  title_text_2" style="padding: 10px;">
+                        <!-- add email icon -->
+                        <div class="boxx" style="background-color: #E0A56B;padding: 10px 17px; border-radius: 8px;color: white;">
+                        <i class="fa fa-envelope-o" aria-hidden="true" style=" font-size: 20px;font-weight: 600;margin-top: 5px ;"></i>
+                        </div>
+                        <p class=" title_text_1" style="font-size: 18px;text-align: justify; border-radius: 12px; border: 1px solid transparent;padding: 10px; background-color: rgb(240,244,255);color: rgb(55, 112, 255);margin-top: 1rem;margin-bottom: 1rem; width:100%;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="prefix__feather prefix__feather-link"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"></path></svg>
+                            &nbsp;{{ model.email }}
+                        </p>
+                    </div>
+                    <div class="   title_text_2" style="padding: 10px;">
+                        <!-- add phone icon -->
+                        <div class="boxx" style="background-color: #eb6648;padding: 10px 17px; border-radius: 8px;color: white;">
+                        <i class="fa fa-phone" aria-hidden="true" style=" font-size: 20px;font-weight: 600;margin-top: 5px ;"></i>
+                        </div>
+                        <p class=" title_text_1" style="font-size: 18px;text-align: justify; border-radius: 12px; border: 1px solid transparent;padding: 10px; background-color: rgb(240,244,255);color: rgb(55, 112, 255);margin-top: 1rem;margin-bottom: 1rem;width: 100%;">    
+                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="prefix__feather prefix__feather-link"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"></path></svg>  
+                            &nbsp;{{ model.phone }}
+                        </p>
+                    </div>
+                    <div class="   title_text_2" style="padding: 10px;">
+                        <div class="boxx" style="background-color: #3579ea;padding: 10px 17px; border-radius: 8px;color: white;">
+                        <i class="fa fa-facebook" aria-hidden="true" style=" font-size: 20px;font-weight: 600;margin-top: 5px ;"></i>
+                        </div>
+                        <p class=" title_text_1" style="font-size: 18px;text-align: justify; border-radius: 12px; border: 1px solid transparent;padding: 10px; background-color: rgb(240,244,255);color: rgb(55, 112, 255);margin-top: 1rem;margin-bottom: 1rem;width: 100%;">    
+                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="prefix__feather prefix__feather-link"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"></path></svg>  
+                            &nbsp;https://www.facebook.com/ieeeadgitm
+                        </p>
+                    </div>
+                    <!-- website -->
+                    <div class="   title_text_2" style="padding: 10px;">
+                        <div class="boxx" style="background-color: #989898;padding: 10px 17px; border-radius: 8px;color: white;">
+                        <i class="fa fa-globe" aria-hidden="true" style=" font-size: 20px;font-weight: 600;margin-top: 5px ;"></i>
+                        </div>
+                        <p class=" title_text_1" style="font-size: 18px;text-align: justify; border-radius: 12px; border: 1px solid transparent;padding: 10px; background-color: rgb(240,244,255);color: rgb(55, 112, 255);margin-top: 1rem;margin-bottom: 1rem;width: 100%;">    
+                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="prefix__feather prefix__feather-link"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"></path></svg>  
+                            &nbsp;https://www.binayakjha.com.np
+                        </p>
+                    </div>
+                    <!-- facebook page -->
+                   
+                </div>
+                
+                <div class="   title_text_2" style="padding: 15px;">
+                    <a href="/eca_apply/{{model.name}}" class="btn btn-primary" style="width: 100%;color: white !important;padding: 10px;">Apply Now</a>
+                </div>
+            </div>
+            <!-- apply now button -->
+         
+        </div>
+
+   </div>
+            
+           
+        </div>
+        <!-- cards -->
+        
+    </div>
+
+</body>
+
+</html>

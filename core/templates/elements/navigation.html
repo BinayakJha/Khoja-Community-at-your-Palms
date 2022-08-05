@@ -1,0 +1,45 @@
+{% load static %}
+<nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top fixed-top">
+    <div class="container-fluid">
+       
+        <!-- logo -->
+        <a class="navbar-brand" href="/">
+            <img src="{% static 'image/logo.png' %}" width="170" height="70" class="d-inline-block align-top" alt="Logo" style="object-fit: contain;">
+        </a>
+            </div>
+            <li class="nav-item dropdown no-arrow " style="padding-bottom: 28px;">
+                <div class="nav-item dropdown no-arrow">
+                    {% if user.is_authenticated %}
+                    <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">
+                        
+                        <img class="border rounded-circle img-profile" src="{% static 'image/avatar.png' %}">
+                    </a>
+                    <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in" style="margin: 15px 5px;">
+                        <a class="dropdown-item" href="/profile">
+                            <i class="fas fa-cogs fa-sm fa-fw me-2 text-gray-400"></i>
+                                &nbsp;Settings
+                        </a>
+                        <a class="dropdown-item" href="/add_eca">
+                            <i class="fas fa-edit fa-sm fa-fw me-2 text-gray-400"></i>
+                                &nbsp;Organize Events
+                        </a>
+                        <div class="dropdown-divider">
+
+                        </div>
+                        <a class="dropdown-item" href="/logout">
+                            <i class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>
+                            &nbsp;Logout
+                        </a>
+                    </div>
+                    {% else %}
+                    <a class="dropdown-toggle nav-link" aria-expanded="false" href="/login" style="padding: 0px 40px;">
+                        <i class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>
+                        &nbsp;Login
+                    </a>
+                    {% endif %}
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+<br><br><br><br><br>

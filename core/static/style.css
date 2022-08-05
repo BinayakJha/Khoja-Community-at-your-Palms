@@ -1,0 +1,179 @@
+
+/* import poppins */
+@import url(https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700);
+:root{
+    --theme-color: rgb(55, 112, 255) !important;
+    --theme-color-dark: rgb(35, 104, 251) !important;
+}
+*{
+    box-sizing: border-box;
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: rgb(240, 245, 245) !important;
+}
+.boxxx{
+    border-radius: 12px;
+    padding: 15px;
+    background: white;
+}
+.box{
+    border-radius: 12px;
+    padding: 15px;
+    margin: 10px 0;
+    background: white;
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    margin-left: 22px;
+    box-shadow: rgb(3 0 92 / 10%) 0px 1px 4px;
+}
+
+#search{
+    border: none;
+    border-radius: 12px;
+    width: 80%;
+    padding: 17px;
+    background-color: rgb(240, 245, 245);
+    box-shadow: rgb(208 217 218) 0px 0px 0px 2px;
+}
+
+#search-btn{
+    border: none;
+    border-radius: 12px;
+    width: 20%;
+    padding: 17px;
+    margin: 0px 10px;
+    font-size: 19px;
+    background-color: var(--theme-color);
+    
+}
+
+::placeholder {
+    color: rgb(120, 120, 120);
+    opacity: 0.5; 
+    font-size: 15px !important;
+}
+
+.card{
+    color: black;
+    -webkit-box-pack: justify;
+    border-radius: 16px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgb(3 0 92 / 10%) 0px 1px 4px;
+    height: 100%;
+}
+.card-title{
+    box-sizing: border-box;
+    margin: 0px;
+    font-family: "Poppins", sans-serif;
+    font-size: 24px;
+    color: rgb(39, 51, 57);
+    font-weight: 800;
+    line-height: 28px;
+}
+
+/* Theme text  */
+.theme-content {
+    box-sizing: border-box;
+    margin: 0px;
+    font-family: "Poppins", sans-serif;
+    font-size: 12px;
+    color: rgb(142, 152, 156);
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.theme-desc {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 8px;
+}
+
+.theme-conts {
+    padding: 11px 16px;
+    border-radius: 20px;
+    border-style: solid;
+    border-color: rgb(228, 234, 235);
+    border-width: 2px;
+}
+
+
+/* Other things in the box */
+.kzkZgo {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 8px;
+    margin: 20px 0px ;
+}
+
+.theme-box {
+    background-color: rgb(245, 247, 247);
+    padding: 16px;
+    border-radius: 16px;
+    white-space: nowrap;
+}
+
+.theme-texts {
+    box-sizing: border-box;
+    margin: 0px;
+    font-family: "Poppins", sans-serif;
+    font-size: 12px;
+    color: rgb(56, 71, 78);
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.btn-green{
+    background-color: var(--theme-color);
+    border-radius: 12px;
+    padding: 10px;
+    color: white;
+    font-size: 19px;
+    font-weight: 500;
+    border: none;
+    
+}
+.btn-primary{
+    background-color: var(--theme-color-dark) !important;
+    border: var(--theme-color-dark) !important;
+    
+}
+
+.card:hover{
+    border: 2px solid var(--theme-color);
+}
+
+.card-header{
+    border-top-left-radius: 16px !important;
+    border-top-right-radius: 16px !important;
+    color: var(--theme-color) !important;
+}
+
+
+
+a {
+    color: var(--theme-color-dark) !important;
+}
+
+/* hide the search bar after in decreses from the tablet size  */
+@media screen and (max-width: 425px) {
+    #search {
+        display: none;
+    }
+    #search-btn {
+        display: none;
+    }
+    .box{
+        display: none;
+    }
+}

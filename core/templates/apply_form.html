@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Apply Form - ECA Finder</title>
+     <!-- Links  -->
+     {% include 'elements/links.html' %}
+     {% load static %}
+</head>
+<body>
+    {% include 'elements/navigation.html' %}
+    <div class="container">
+        <div class="col">
+            <form method="post" action="{% url 'eca_apply_submit' %}"  id="id_ajax_upload_form">
+                {% csrf_token %}
+                {{ form.media }}
+                <div class="card shadow mb-3">
+                    <div class="card-header py-3">
+                        <p class="text-primary m-0 fw-bold">Basic Info</p>
+                    </div>
+                    <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="id_ecs">
+                                            <strong>ECA Name</strong>
+                                        </label>
+                                        <input class="form-control" type="text" name="eca" id="id_eca" value="{{ model.name }}" readonly required>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="id_name">
+                                            <strong>Name</strong>
+                                        </label>
+                                            <input class="form-control" type="text" id="id_name" placeholder="John Doe" name="name" value="{{ request.user.first_name }}" readonly required>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="id_email">
+                                            <strong>Email Address</strong>
+                                        </label>
+                                        <input class="form-control" type="email" id="id_email" placeholder="user@example.com" name="email" value="{{ request.user.email }}" readonly required>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="id_phone">
+                                            <strong>Phone Number</strong>
+                                        </label>
+                                            <input class="form-control" type="text" id="id_phone" placeholder="Your Number" name="phone" required>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <!-- blood group  -->
+                                    <div class="mb-3">
+                                        <label class="form-label" for="id_theme">
+                                            <strong>Org Theme</strong>
+                                        </label>
+                                        <input class="form-control" type="text" id="theme" placeholder="Your Theme" name="theme" value="{{ model.theme }}" readonly required>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+                <div class="card shadow">
+                    <div class="card-header py-3">
+                        <p class="text-primary m-0 fw-bold">{{ model.questions }}</p>
+                    </div>
+                    <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="id_questions_answer">
+                                            <strong>Answer</strong>
+                                        </label>
+                                        <textarea name="questions_answer" id="id_questions_answer" cols="30" rows="10" class=" form-control"></textarea>
+                                    </div>
+                                </div>
+                                {% csrf_token %}
+                                <button class="btn btn-primary btn-md" type="submit" style="background: #e02244;border:1px solid red;">
+                                    Submit Application
+                                </button>
+                            </div>
+                            
+                    </div>
+                    
+                </div>
+                
+                <br>
+            
+                    </div>
+                </div>
+        </form>
+        </div>
+    </div>
+<!-- Scripts -->
+{% include 'elements/scripts.html' %}
+</body>
+</html>

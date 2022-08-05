@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECA Add Form</title>
+     <!-- Links  -->
+     {% include 'elements/links.html' %}
+     {% load static %}
+</head>
+<body>
+    {% include 'elements/navigation.html' %}
+    <div class="container">
+        <div class="col">
+            <form method="post" action="{% url 'add_eca_submit' %}"  id="id_ajax_upload_form">
+                {% csrf_token %}
+                {{ form.media }}
+                <div class="card shadow mb-3">
+                    <div class="card-header py-3">
+                        <p class="text-primary m-0 fw-bold">Basic Info</p>
+                    </div>
+                    <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="id_name">
+                                            <strong>ECA Name</strong>
+                                        </label>
+                                            <input class="form-control" type="text" id="id_name" placeholder="Bagmati Safai Abhiyan" name="name" required>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="id_email">
+                                            <strong>Email Address</strong>
+                                        </label>
+                                        <input class="form-control" type="email" id="id_email" placeholder="user@example.com" name="email">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="id_phone">
+                                            <strong>Phone Number</strong>
+                                        </label>
+                                            <input class="form-control" type="text" id="id_phone" placeholder="25" name="phone">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <!-- blood group  -->
+                                    <div class="mb-3">
+                                        <label class="form-label" for="id_theme">
+                                            <strong>Theme</strong>
+                                        </label>
+                                        <select class="form-control" id="id_theme" name="theme">
+                                            <option value="Academic">Academic</option>
+                                            <option value="Art">Art</option>
+                                            <option value="Athletics: Club">Athletics: Club</option>
+                                            <option value="Athletics: JV/Varsity">Athletics: JV/Varsity</option>
+                                            <option value="Career Oriented">Career Oriented</option>
+                                            <option value="Community Service (Volunteer)">Community Service (Volunteer)</option>
+                                            <option value="Computer/Technology">Computer/Technology</option>
+                                            <option value="Cultural">Cultural</option>
+                                            <option value="Dance">Dance</option>
+                                            <option value="Debate/Speech">Debate/Speech</option>
+                                            <option value="Environmental">Environmental</option>
+                                            <option value="Family Responsibilities">Family Responsibilities</option>
+                                            <option value="Foreign Exchange">Foreign Exchange</option>
+                                            <option value="Foreign Language">Foreign Language</option>
+                                            <option value="Internship">Internship</option>
+                                            <option value="Journalism/Publication">Journalism/Publication</option>
+                                            <option value="Junior R.O.T.C.">Junior R.O.T.C.</option>
+                                            <option value="LGBT">LGBT</option>
+                                            <option value="Music: Instrumental">Music: Instrumental</option>
+                                            <option value="Music: Vocal">Music: Vocal</option>
+                                            <option value="Religious">Religious</option>
+                                            <option value="Research">Research</option>
+                                            <option value="Robotics">Robotics</option>
+                                            <option value="School Spirit">School Spirit</option>
+                                            <option value="Science/Math">Science/Math</option>
+                                            <option value="Social Justice">Social Justice</option>
+                                            <option value="Student Govt./Politics">Student Govt./Politics</option>
+                                            <option value="Threater/Drama">Threater/Drama</option>
+                                            <option value="Work (Paid)">Work (Paid)</option>
+                                            <option value="Other Club/Activity">Other Club/Activity</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+                <div class="card shadow">
+                    <div class="card-header py-3">
+                        <p class="text-primary m-0 fw-bold">About The ECA</p>
+                    </div>
+                    <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="id_message">
+                                            <strong>About</strong>
+                                        </label>
+                                        <textarea name="message" id="id_message" cols="30" rows="10" class=" form-control"></textarea>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            
+                    </div>
+                </div>
+                <br>
+                <div class="card shadow">
+                    <div class="card-header py-3">
+                        <p class="text-primary m-0 fw-bold">Additional Info</p>
+                    </div>
+                    <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="id_questions">
+                                            <strong>Questions</strong>
+                                        </label>
+                                        <!-- input -->
+                                        <input class="form-control" type="text" id="id_questions" placeholder="Why Do you want to join ?" name="questions">
+                                    </div>
+                                    <!-- Online or offline option  -->
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <!-- blood group  -->
+                                    <div class="mb-3">
+                                        <label class="form-label" for="id_online_or_offline">
+                                            <strong>Happening ?</strong>
+                                        </label>
+                                        <select class="form-control" id="id_online_or_offline" name="online_or_offline">
+                                            <option value="Online">Online</option>
+                                            <option value="Offline">Offline</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                    <!-- happening date  -->
+                                    <div class="col">
+                                        <div class="mb-3">
+                                            <label class="form-label" for="id_happening_date">
+                                                <strong>Happening Date?</strong>
+                                            </label>
+                                            <input type="date" name="happening_date" value="20XX-XX-XX" required id="id_happening_date" class="form-control">
+                                        </div>
+                                    </div>
+                                    
+                                    </div>
+                            
+                                    
+                            <div class="mb-3">
+                                {% csrf_token %}
+                                <button class="btn btn-primary btn-md" type="submit" style="background: #e02244;border:1px solid red;">
+                                    Publish Event
+                                </button>
+                            </div>
+                    </div>
+                </div>
+        </form>
+        </div>
+    </div>
+<!-- Scripts -->
+{% include 'elements/scripts.html' %}
+</body>
+</html>
