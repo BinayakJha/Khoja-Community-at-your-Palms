@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>{{ model.name }} - Eca Finder</title>
     {% include 'elements/links.html' %}
     {% load static %}
 </head>
@@ -115,8 +115,9 @@
             object-fit: cover
         }
     </style>
-    <div class="container-flex">
-        <div direction="column" class="  bg-color title_top">
+    <div class="container" >
+        <div class="card">
+        <div direction="column" class="  bg-color title_top" style="border-radius: 12px !important;">
             <div class="  box_cont-1 addition-css">
                 <div width="5rem" overflow="hidden" class="  box_cont ">
                     <div width="100%" class=" box_cont-2">
@@ -133,8 +134,53 @@
             </div>
         </div>
     </div>
+    </div>
+    
     <br>
+    
     <div class="container">
+        <div class="card col-md-12 col-sm-12" style="margin-bottom: 40px;">
+            <div class="card-body" style="display: flex;">
+                <div class="half-card-body" style="width: 60%;">
+                    <br>
+                    <div class="cont" style="display: flex;">
+                        <a href="#" style="text-decoration: none;">
+                            <h5 class="card-title">{{ model.name }}</h5>
+                        </a>
+                        <a href="../../edit_eca/{{ model.name }}" style="text-decoration: none;display: grid;">
+                            {% if request.user.id == model.user_id.id %}
+                            <i class="fas fa-edit" style="color: #00bcd4;padding: 5px 10px;font-size: 20px;"></i>
+                            {% endif %}
+                        </a>
+                    </div>
+                    <br>
+                    <h6 class="card-subtitle mb-2 text-muted theme-content">THEME</h6>
+                    <div wrap="wrap" direction="row" class="theme-desc">
+                        <div class=" theme-conts">
+                            <p class=" theme-content">{{ model.theme }}</p>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="card-text">
+                        <div direction="row" wrap="wrap" style="align-self:flex-start" class="   kzkZgo">
+                            <div class=" theme-box">
+                                <p class=" theme-texts">{{ model.online_or_offline }}</p>
+                            </div>
+                            <div class=" theme-box">
+                                <p class=" theme-texts">Open</p>
+                            </div>
+                            <div class=" theme-box">
+                                <p class=" theme-texts">Starts {{model.happening_date}}</p>
+                            </div>
+                    </div>
+                </div>
+                    
+            </div>
+            <div class="half-card-body" style="width: 40%;" style="overflow: hidden;">
+            <img src="../../core/media/{{ model.main_image }}" alt="" style="object-fit: cover;width: 100%;height: 100%;border-radius: 12px;">
+            </div>
+                </div>
+<hr>
    <div class="row">
     <div class="col-md-12">
         <div class="boxxx">
@@ -143,53 +189,79 @@
                 <h1 class=" title_text_3" style="text-transform: uppercase; ">ABOUT</h1>
             </div>
             <div class="   title_text_2" style="padding: 10px;">
-                <p class=" title_text_1" style="font-size: 18px;text-align: justify;">{{ model.message }}</p>
+                <p class=" title_text_1" style="font-size: 18px;text-align: justify;" >{{ model.message }}</p>
             </div>
             
                 <!-- add the email phone number and other given information -->
-                <div class="col-md-12 " style=" display: flex;justify-content: flex-start;flex-wrap: wrap; flex-direction: row;">
-                    
+                <div class="col-md-12 " style=" display: flex;justify-content: center;flex-wrap: wrap; flex-direction: row;">
+                    <a href="mailto:{{ model.email }}">
                     <div class="  title_text_2" style="padding: 10px;">
                         <!-- add email icon -->
                         <div class="boxx" style="background-color: #E0A56B;padding: 10px 17px; border-radius: 8px;color: white;">
                         <i class="fa fa-envelope-o" aria-hidden="true" style=" font-size: 20px;font-weight: 600;margin-top: 5px ;"></i>
                         </div>
-                        <p class=" title_text_1" style="font-size: 18px;text-align: justify; border-radius: 12px; border: 1px solid transparent;padding: 10px; background-color: rgb(240,244,255);color: rgb(55, 112, 255);margin-top: 1rem;margin-bottom: 1rem; width:100%;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="prefix__feather prefix__feather-link"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"></path></svg>
-                            &nbsp;{{ model.email }}
-                        </p>
+                      
                     </div>
+                </a>
+                <a href="phoneto:{{ model.phone }}" target="_blank">
                     <div class="   title_text_2" style="padding: 10px;">
                         <!-- add phone icon -->
                         <div class="boxx" style="background-color: #eb6648;padding: 10px 17px; border-radius: 8px;color: white;">
                         <i class="fa fa-phone" aria-hidden="true" style=" font-size: 20px;font-weight: 600;margin-top: 5px ;"></i>
                         </div>
-                        <p class=" title_text_1" style="font-size: 18px;text-align: justify; border-radius: 12px; border: 1px solid transparent;padding: 10px; background-color: rgb(240,244,255);color: rgb(55, 112, 255);margin-top: 1rem;margin-bottom: 1rem;width: 100%;">    
-                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="prefix__feather prefix__feather-link"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"></path></svg>  
-                            &nbsp;{{ model.phone }}
-                        </p>
+                        
                     </div>
+                </a>
+                <a href="{{ model.facebook}}" target="_blank">
                     <div class="   title_text_2" style="padding: 10px;">
                         <div class="boxx" style="background-color: #3579ea;padding: 10px 17px; border-radius: 8px;color: white;">
                         <i class="fa fa-facebook" aria-hidden="true" style=" font-size: 20px;font-weight: 600;margin-top: 5px ;"></i>
                         </div>
-                        <p class=" title_text_1" style="font-size: 18px;text-align: justify; border-radius: 12px; border: 1px solid transparent;padding: 10px; background-color: rgb(240,244,255);color: rgb(55, 112, 255);margin-top: 1rem;margin-bottom: 1rem;width: 100%;">    
-                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="prefix__feather prefix__feather-link"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"></path></svg>  
-                            &nbsp;https://www.facebook.com/ieeeadgitm
-                        </p>
+                        
                     </div>
+                </a>
+                <a href="{{ model.website}}" target="_blank">
                     <!-- website -->
                     <div class="   title_text_2" style="padding: 10px;">
                         <div class="boxx" style="background-color: #989898;padding: 10px 17px; border-radius: 8px;color: white;">
                         <i class="fa fa-globe" aria-hidden="true" style=" font-size: 20px;font-weight: 600;margin-top: 5px ;"></i>
                         </div>
-                        <p class=" title_text_1" style="font-size: 18px;text-align: justify; border-radius: 12px; border: 1px solid transparent;padding: 10px; background-color: rgb(240,244,255);color: rgb(55, 112, 255);margin-top: 1rem;margin-bottom: 1rem;width: 100%;">    
-                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="prefix__feather prefix__feather-link"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"></path></svg>  
-                            &nbsp;https://www.binayakjha.com.np
-                        </p>
+                        
                     </div>
-                    <!-- facebook page -->
-                   
+                </a>
+                <a href="{{ model.discord}}" target="_blank">
+                
+                    <!-- discord -->
+                    <div class="   title_text_2" style="padding: 10px;">
+                        <div class="boxx" style="background-color: #7289da;padding: 10px 17px; border-radius: 8px;color: white;">
+                        <i class="fab fa-discord" aria-hidden="true" style=" font-size: 20px;font-weight: 600;margin-top: 5px ;"></i>
+                        </div>
+                    </div>
+                </a>
+                <a href="{{ model.twitter }}" target="_blank">
+                   <!-- twitter  -->
+                     <div class="   title_text_2" style="padding: 10px;">
+                            <div class="boxx" style="background-color: #1da1f2;padding: 10px 17px; border-radius: 8px;color: white;">
+                            <i class="fa fa-twitter" aria-hidden="true" style=" font-size: 20px;font-weight: 600;margin-top: 5px ;"></i>
+                            </div>
+                      </div>
+                </a>
+                <a href="">
+                    <!-- youtube -->
+                    <div class="   title_text_2" style="padding: 10px;">
+                        <div class="boxx" style="background-color: #ff0000;padding: 10px 17px; border-radius: 8px;color: white;">
+                        <i class="fa fa-youtube" aria-hidden="true" style=" font-size: 20px;font-weight: 600;margin-top: 5px ;"></i>
+                        </div>
+                    </div>
+                </a>
+                <a href="{{ model.discord }}" target="_blank">
+                      <!-- instagram -->
+                      <div class="   title_text_2" style="padding: 10px;">
+                            <div class="boxx" style="background-color: #e4405f;padding: 10px 17px; border-radius: 8px;color: white;">
+                            <i class="fa fa-instagram" aria-hidden="true" style=" font-size: 20px;font-weight: 600;margin-top: 5px ;"></i>
+                            </div>
+                      </div>
+                </a>
                 </div>
                 
                 <div class="   title_text_2" style="padding: 15px;">

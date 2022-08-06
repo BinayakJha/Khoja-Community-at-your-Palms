@@ -16,11 +16,7 @@
             {% include 'elements/navigation.html' %}
         <!-- TOTAL NAVIGATION ENDED  -->
     <div class="container">
-        <div class="box ">
-            <input type="text" name="search-box" id="search" placeholder="Type to begin search">
-            <!-- button -->
-            <button type="button" class="btn btn-primary" id="search-btn">Search</button>
-        </div>
+       
         <div class="cards-section">
             <!-- add a title -->
             <br><br>
@@ -31,42 +27,158 @@
             {% endif %}
            
             <br><br>
-            <!-- Cards Start -->
-            <div style="display: flex;
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="boxxx" style="position: -webkit-sticky; /* Safari */
+                    position: sticky;
+                    top: 100px;">
+                        <div class="center">
+                            <center>
+                            <img src="{% static 'image/filter.png' %}" alt="filter icon" style="width: 35px;object-fit: contain;">
+                            <span id="filter_ui_heading_desktop" class="heading_5" style="font-size: 20px;font-weight:600;color:black;padding:10px 5px;">Filters</span>
+                        </center>
+                        </div>
+                        <!-- Theme -->
+                        <div class="col">
+                            <!--eca theme -->
+                            <div class="mb-3">
+                                <label class="form-label" for="id_theme">
+                                    <strong>Theme</strong>
+                                </label>
+                                <select class="form-control" id="id_theme" name="theme">
+                                    <option value="Academic">Academic</option>
+                                    <option value="Art">Art</option>
+                                    <option value="Athletics: Club">Athletics: Club</option>
+                                    <option value="Athletics: JV/Varsity">Athletics: JV/Varsity</option>
+                                    <option value="Career Oriented">Career Oriented</option>
+                                    <option value="Community Service (Volunteer)">Community Service (Volunteer)</option>
+                                    <option value="Computer/Technology">Computer/Technology</option>
+                                    <option value="Cultural">Cultural</option>
+                                    <option value="Dance">Dance</option>
+                                    <option value="Debate/Speech">Debate/Speech</option>
+                                    <option value="Environmental">Environmental</option>
+                                    <option value="Family Responsibilities">Family Responsibilities</option>
+                                    <option value="Foreign Exchange">Foreign Exchange</option>
+                                    <option value="Foreign Language">Foreign Language</option>
+                                    <option value="Internship">Internship</option>
+                                    <option value="Journalism/Publication">Journalism/Publication</option>
+                                    <option value="Junior R.O.T.C.">Junior R.O.T.C.</option>
+                                    <option value="LGBT">LGBT</option>
+                                    <option value="Music: Instrumental">Music: Instrumental</option>
+                                    <option value="Music: Vocal">Music: Vocal</option>
+                                    <option value="Religious">Religious</option>
+                                    <option value="Research">Research</option>
+                                    <option value="Robotics">Robotics</option>
+                                    <option value="School Spirit">School Spirit</option>
+                                    <option value="Science/Math">Science/Math</option>
+                                    <option value="Social Justice">Social Justice</option>
+                                    <option value="Student Govt./Politics">Student Govt./Politics</option>
+                                    <option value="Threater/Drama">Threater/Drama</option>
+                                    <option value="Work (Paid)">Work (Paid)</option>
+                                    <option value="Other Club/Activity">Other Club/Activity</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="mb-3">
+                                <label class="form-label" for="id_online_or_offline">
+                                    <strong>Happening ?</strong>
+                                </label>
+                                <select class="form-control" id="id_online_or_offline" name="online_or_offline">
+                                    <option value="Online">Online</option>
+                                    <option value="Offline">Offline</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- filter button -->
+                        <br>
+                        <div class="col">
+                            <div class="mb-3">
+                                <button class="btn btn-primary" type="submit" id="filter_button" style="width: 100%;">
+                                    <strong>Filter</strong>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="boxxx" style="position: -webkit-sticky; /* Safari */
+                    position: sticky;
+                    top: 450px;">
+                        <!-- keyword search box -->
+                        <div class="col">
+                            <div class="mb-3">
+                                <label class="form-label" for="id_keyword_search">
+                                    <strong>Theme Search</strong>
+                                </label>
+                                <input class="form-control" id="id_theme_search" name="theme_search" type="text" placeholder="Search by theme">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-8 col-sm-12">
+                <div style="display: flex;
             justify-content: space-around;
             flex-wrap: wrap;">
                 {% for mod in model %}
-                <div class="card col-md-5 col-sm-12" style="margin-bottom: 40px;">
-                    <div class="card-body">
-                    <a href="view_eca/{{ mod.id }}" style="text-decoration: none;">
-                        <h5 class="card-title">{{ mod.name }}</h5>
-                    </a>
-                    <br>
-                    <h6 class="card-subtitle mb-2 text-muted theme-content">THEME</h6>
-                    <div wrap="wrap" direction="row" class="theme-desc">
-                        <div class=" theme-conts">
-                            <p class=" theme-content">{{ mod.theme }}</p>
+                <div class="card col-md-12 col-sm-12" style="margin-bottom: 40px;">
+                    <div class="card-body" style="display: flex;">
+                        <div class="half-card-body" style="width: 60%;">
+                            <br>
+                            <div class="cont" style="display: flex;">
+                                <a href="view_eca/{{ mod.name }}" style="text-decoration: none;display: grid;">
+                                    
+                                    <h5 class="card-title">{{ mod.name }}</h5>
+                                </a>
+                                <a href="edit_eca/{{ mod.name }}" style="text-decoration: none;display: grid;">
+                                {% if request.user.id == mod.user_id.id %}
+                                <i class="fas fa-edit" style="color: #00bcd4;padding: 5px 10px;"></i>
+                                {% endif %}
+                                 </a>
+                            </div>
+                            
+                            <br>
+                            <h6 class="card-subtitle mb-2 text-muted theme-content">THEME</h6>
+                            <div wrap="wrap" direction="row" class="theme-desc">
+                                <div class=" theme-conts">
+                                    <p class=" theme-content">{{ mod.theme }}</p>
+                                </div>
+                            </div>
+                            <div class="card-text">
+                                <div direction="row" wrap="wrap" style="align-self:flex-start" class="   kzkZgo">
+                                    <div class=" theme-box">
+                                        <p class=" theme-texts">{{ mod.online_or_offline }}</p>
+                                    </div>
+                                    <div class=" theme-box">
+                                        <p class=" theme-texts">Open</p>
+                                    </div>
+                                    <div class=" theme-box">
+                                        <p class=" theme-texts">Starts {{mod.happening_date}}</p>
+                                    </div>
+                            </div>
+                        </div>
+                        
+                            <a href="view_eca/{{ mod.name }}" class="card-link">
+                                <button class=" btn-green btn-lg" style="width: 90%;">View More</button>
+                            </a>
+                            
+                    </div>
+                    <div class="half-card-body" style="width: 40%;" style="overflow: hidden;">
+                        <div style="background: url('core/media/{{ mod.main_image }}') ;width: 100%;
+                        height: 100%;
+                        background-size: cover;
+                        background-repeat: no-repeat;
+                        background-position: center;" >
+
+                        </div>
+                    <!-- <img src="core/media/{{ mod.main_image }}" alt="" style="object-fit: cover;width: 100%;height: 100%;border-radius: 12px;"> -->
+                    </div>
                         </div>
                     </div>
-                    <div class="card-text">
-                        <div direction="row" wrap="wrap" style="align-self:flex-start" class="   kzkZgo">
-                            <div class=" theme-box">
-                                <p class=" theme-texts">{{ mod.online_or_offline }}</p>
-                            </div>
-                            <div class=" theme-box">
-                                <p class=" theme-texts">Open</p>
-                            </div>
-                            <div class=" theme-box">
-                                <p class=" theme-texts">Starts {{mod.happening_date}}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="view_eca/{{ mod.name }}" class="card-link">
-                        <button class=" btn-green btn-lg" style="width: 100%;">Apply Now</button>
-                    </a>
-                    </div>
-                </div>
                 {% endfor %}
+
+                </div>
+            </div>
              
             </div>
         </div>

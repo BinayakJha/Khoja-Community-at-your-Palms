@@ -4,22 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ECA Add Form</title>
-     <!-- Links  -->
-     {% include 'elements/links.html' %}
-     {% load static %}
+    <title>Edit Info - {{ model.name }}</title>
+    {% include 'elements/links.html' %}
+    {% load static %}
 </head>
 <body>
     {% include 'elements/navigation.html' %}
     <div class="container">
         <div class="col">
-            <form method="post" action="{% url 'add_eca_submit' %}"  id="id_ajax_upload_form" enctype="multipart/form-data">
+            <form method="post" action="/edit_eca_submit/{{ model.name }}"  id="id_ajax_upload_form" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ form.media }}
-
+                <input class="form-control" type="hidden" id="id_user_id" placeholder="user@example.com" name="user_id" value="{{ request.user.id }}" readonly>
                 <div class="card shadow mb-3">
                     <div class="card-header py-3">
-                        <p class="text-primary m-0 fw-bold">Basic Info</p>
+                        <p class="text-primary m-0 fw-bold">Edit Info</p>
                     </div>
                     <div class="card-body">
                             <div class="row">
@@ -28,7 +27,7 @@
                                         <label class="form-label" for="id_name">
                                             <strong>ECA Name</strong>
                                         </label>
-                                            <input class="form-control" type="text" id="id_name" placeholder="Bagmati Safai Abhiyan" name="name" required>
+                                            <input class="form-control" type="text" id="id_name" placeholder="ECA Name" value = "{{ model.name }}" name="name" required>
                                     </div>
                                 </div>
                                 <div class="col">
@@ -36,11 +35,9 @@
                                         <label class="form-label" for="id_email">
                                             <strong>Email Address</strong>
                                         </label>
-                                        <input class="form-control" type="email" id="id_email" placeholder="user@example.com" name="email" value="{{ request.user.email }}" readonly>
+                                        <input class="form-control" type="email" id="id_email" placeholder="user@example.com" value = "{{ model.email }}" name="email">
                                     </div>
                                 </div>
-                                <!-- user_id -->
-                                        <input class="form-control" type="hidden" id="id_user_id" placeholder="user@example.com" name="user_id" value="{{ request.user.id }}" readonly>
                             </div>
                             
                             <div class="row">
@@ -49,7 +46,7 @@
                                         <label class="form-label" for="id_phone">
                                             <strong>Phone Number</strong>
                                         </label>
-                                            <input class="form-control" type="text" id="id_phone" placeholder="25" name="phone">
+                                            <input class="form-control" type="text" id="id_phone" placeholder="25" name="phone" value = "{{ model.phone }}">
                                     </div>
                                 </div>
                                 <div class="col">
@@ -59,6 +56,7 @@
                                             <strong>Theme</strong>
                                         </label>
                                         <select class="form-control" id="id_theme" name="theme">
+                                            <option value="{{model.theme }}">{{ model.theme }}</option>
                                             <option value="Academic">Academic</option>
                                             <option value="Art">Art</option>
                                             <option value="Athletics: Club">Athletics: Club</option>
@@ -106,7 +104,9 @@
                                         <label class="form-label" for="id_message">
                                             <strong>About</strong>
                                         </label>
-                                        <textarea name="message" id="id_message" cols="30" rows="10" class=" form-control"></textarea>
+                                        
+                                        <textarea name="message" id="id_message" cols="30" rows="10" class=" form-control">{{ model.message }}
+                                        </textarea>
                                     </div>
                                 </div>
                             </div>
@@ -125,7 +125,7 @@
                                         <label class="form-label" for="id_facebook">
                                             <strong>Facebook</strong>
                                         </label>
-                                        <input class="form-control" type="text" id="id_facebook" value="https://www.facebook.com/" name="facebook">
+                                        <input class="form-control" type="text" id="id_facebook" value="{{ model.facebook }}" name="facebook">
                                     </div>
                                 </div>
                                 <div class="col">
@@ -133,7 +133,7 @@
                                         <label class="form-label" for="id_instagram">
                                             <strong>Instagram</strong>
                                         </label>
-                                        <input class="form-control" type="text" id="id_instagram" value="https://www.instagram.com/" name="instagram">
+                                        <input class="form-control" type="text" id="id_instagram" value="{{ model.instagram }}" name="instagram">
                                     </div>
                                 </div>
                             </div>
@@ -143,7 +143,7 @@
                                         <label class="form-label" for="id_twitter">
                                             <strong>Twitter</strong>
                                         </label>
-                                        <input class="form-control" type="text" id="id_twitter" value="https://www.twitter.com/" name="twitter">
+                                        <input class="form-control" type="text" id="id_twitter" value="{{ model.twitter }}" name="twitter">
                                     </div>
                                 </div>
                                 <div class="col">
@@ -151,7 +151,7 @@
                                         <label class="form-label" for="id_youtube">
                                             <strong>Youtube</strong>
                                         </label>
-                                        <input class="form-control" type="text" id="id_youtube" value="https://www.youtube.com/" name="youtube">
+                                        <input class="form-control" type="text" id="id_youtube" value="{{ model.youtube }}" name="youtube">
                                     </div>
                                 </div >
                                 <!-- website and discord  -->
@@ -160,7 +160,7 @@
                                         <label class="form-label" for="id_website">
                                             <strong>Website</strong>
                                         </label>
-                                        <input class="form-control" type="text" id="id_website" value="https://www.eca.edu" name="website">
+                                        <input class="form-control" type="text" id="id_website" value="{{ model.website }}" name="website">
                                     </div>
                                 </div>
                                 <div class="col">
@@ -168,7 +168,7 @@
                                         <label class="form-label" for="id_discord">
                                             <strong>Discord</strong>
                                         </label>
-                                        <input class="form-control" type="text" id="id_discord" value="https://discord.gg/" name="discord">
+                                        <input class="form-control" type="text" id="id_discord" value="{{ model.discord }}" name="discord">
                                     </div>
                                 </div>
                             </div>
@@ -187,7 +187,7 @@
                                             <strong>Questions to the applicant (Optional)</strong>
                                         </label>
                                         <!-- input -->
-                                        <input class="form-control" type="text" id="id_questions" placeholder="Why Do you want to join ?" name="questions">
+                                        <input class="form-control" type="text" id="id_questions" placeholder="Why Do you want to join ?" name="questions" value="{{ model.question }}">
                                     </div>
                                 </div>
                                 <!-- image -->
@@ -196,7 +196,10 @@
                                         <label class="form-label" for="id_main_image">
                                             <strong>Image ( It can be you logo too)</strong>
                                         </label>
-                                        <input type="file" name="main_image" accept="image/*" id="id_main_image" class="form-control">
+                                        <br>
+                                        
+                                        <input type="file" name="main_image" accept="image/*" id="id_main_image" class="form-control" value="{{ model.main_image }}">
+                                        <strong>Choosen file:</strong> <a href="{{ model.main_image }}">{{ model.main_image }}</a>
                                     </div>
                             </div>
 
@@ -208,6 +211,7 @@
                                             <strong>Happening ?</strong>
                                         </label>
                                         <select class="form-control" id="id_online_or_offline" name="online_or_offline">
+                                            <option value="{{ model.online_or_offline }}">{{ model.online_or_offline }}</option>
                                             <option value="Online">Online</option>
                                             <option value="Offline">Offline</option>
                                         </select>
@@ -219,17 +223,15 @@
                                             <label class="form-label" for="id_happening_date">
                                                 <strong>Event Date</strong>
                                             </label>
-                                            <input type="date" name="happening_date" value="20XX-XX-XX" required id="id_happening_date" class="form-control">
+                                            <input type="date" name="happening_date" id="id_happening_date" class="form-control" value="{{ model.happening_date }}">
                                         </div>
                                     </div>
-                                    
                                     </div>
-                            
                                     
                             <div class="mb-3">
                                 {% csrf_token %}
                                 <button class="btn btn-primary btn-md" type="submit" style="background: #e02244;border:1px solid red;">
-                                    Publish Event
+                                    Save Event
                                 </button>
                             </div>
                     </div>
@@ -237,7 +239,5 @@
         </form>
         </div>
     </div>
-<!-- Scripts -->
-{% include 'elements/scripts.html' %}
 </body>
 </html>

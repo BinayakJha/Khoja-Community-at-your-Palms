@@ -63,7 +63,7 @@ body{
 .card{
     color: black;
     -webkit-box-pack: justify;
-    border-radius: 16px;
+    border-radius: 12px;
     background-color: rgb(255, 255, 255);
     box-shadow: rgb(3 0 92 / 10%) 0px 1px 4px;
     height: 100%;
@@ -72,7 +72,7 @@ body{
     box-sizing: border-box;
     margin: 0px;
     font-family: "Poppins", sans-serif;
-    font-size: 24px;
+    font-size: 19px;
     color: rgb(39, 51, 57);
     font-weight: 800;
     line-height: 28px;
@@ -159,7 +159,9 @@ body{
     color: var(--theme-color) !important;
 }
 
-
+i{
+    cursor: pointer;
+}
 
 a {
     color: var(--theme-color-dark) !important;
@@ -175,5 +177,23 @@ a {
     }
     .box{
         display: none;
+    }
+}
+
+/* in mobile dispay make the .row flex-direction to columm reverse  */
+@media screen and (max-width: 425px) {
+    .row {
+        flex-direction: column-reverse;
+    }
+    .half-card-body{
+        width: 100% !important;
+    }
+    .card-body{
+        display: flex;
+        flex-direction: column-reverse;
+        flex-wrap: nowrap;
+    }
+    .btn-green{
+        width: 100% !important;
     }
 }

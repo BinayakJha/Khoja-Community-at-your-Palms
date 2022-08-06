@@ -40,7 +40,7 @@ class Tabs:
 class forms:
     def add_eca_submit(request):
         if request.method == 'POST':
-            form = EcaForm(request.POST)
+            form = EcaForm(request.POST,  request.FILES)
             if form.is_valid():
                 form.save()
                 return redirect('index')
@@ -111,4 +111,22 @@ class View:
         model = Eca.objects.get(name=name)
         context = {'model': model}
         return render(self, 'view_eca.html', context)
+    
+    def edit_eca(self, name):
+        model = Eca.objects.get(name=name)
+        form = EcaForm(instance=model)
+        context = {'form': form,
+                    'model': model}
+        return render(self, 'edit_eca.html', context)
+    def edit_eca_submit(self, name):
+        model = Eca.objects.get(name=name)
+        form = EcaForm(self.POST, self.FILES, instance=model)
+       
+        if form.is_valid():
+            
+            form.save()
+            return redirect('index')
+        else:
+            print(form.errors)
+            return render(self, 'edit_eca.html', {'form': form})
     
