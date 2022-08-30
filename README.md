@@ -20,7 +20,7 @@ We also went in the process of choosing a good UI for the project which was not 
 At first clone the repository
 
 ```
-git clone https://github.com/BinayakJha/ImageScraper.git
+git clone https://github.com/BinayakJha/Khoja-Community-at-your-Palms.git
 ```
 
 Now after you have cloned then you should have Python installed.
